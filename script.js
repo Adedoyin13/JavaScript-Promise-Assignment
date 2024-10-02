@@ -3,6 +3,7 @@ console.log('Assignment');
 // CALLBACK
 
 const prepareIngredients = (callback) => {
+    console.log('Preparing Ingredients...');
     setTimeout(() => {
         console.log('Ingredients Prepared!');
         callback()
@@ -10,6 +11,7 @@ const prepareIngredients = (callback) => {
 }
 
 const cookMeal = (callback) => {
+    console.log('Cooking the meal...');
     setTimeout(() => {
         console.log('Meal Cooked!');
        callback()
@@ -23,15 +25,14 @@ const mealReady = () => {
 }
 
 prepareIngredients(() => {
-    cookMeal(() => {
-        mealReady()
-    })
+    cookMeal(mealReady)
 })
  
 // PROMISE
 
 const prepareIngredients2 = () => {
     return new Promise((resolve, reject) => {
+        console.log('Preparing Ingredients...');
         setTimeout(() => {
             const ingredientStatus = true;
             if (ingredientStatus) {
@@ -46,6 +47,7 @@ const prepareIngredients2 = () => {
 
 const cookMeal2 = () => {
     return new Promise((resolve, reject) => {
+        console.log('Cooking the meal...');
         setTimeout(() => {
             const mealStatus = true;
             if (mealStatus) {
